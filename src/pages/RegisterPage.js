@@ -11,6 +11,8 @@ const RegisterPage = () => {
     const [secPassword, setSecPassword] = useState("");
     const [error, setError] = useState("");
     const navigate = useNavigate();
+    const [emailCheckMessage, setEmailCheckMessage] = useState("");
+    const [isEmailValid, setIsEmailValid] = useState(false);
 
     const handleSubmit = async (evnet) => {
         evnet.preventDefault();
@@ -30,6 +32,13 @@ const RegisterPage = () => {
             setError(error.message);
         }
     };
+
+    // const emailCheck = async () => {
+    //     try {
+    //         const response = await api.post("/user/checkEmail", { email });
+    //     } catch (error) {}
+    // };
+
     return (
         <div className="display-center">
             {/* error가 있다면 error 보여줌 */}
@@ -41,6 +50,7 @@ const RegisterPage = () => {
                     <Form.Control
                         type="string"
                         placeholder="Name"
+                        required
                         onChange={(event) => setName(event.target.value)}
                     />
                 </Form.Group>
@@ -50,6 +60,7 @@ const RegisterPage = () => {
                     <Form.Control
                         type="email"
                         placeholder="Enter email"
+                        required
                         onChange={(event) => setEmail(event.target.value)}
                     />
                 </Form.Group>
@@ -59,6 +70,7 @@ const RegisterPage = () => {
                     <Form.Control
                         type="password"
                         placeholder="Password"
+                        required
                         onChange={(event) => setPassword(event.target.value)}
                     />
                 </Form.Group>
@@ -68,6 +80,7 @@ const RegisterPage = () => {
                     <Form.Control
                         type="password"
                         placeholder="re-enter the password"
+                        required
                         onChange={(event) => setSecPassword(event.target.value)}
                     />
                 </Form.Group>
